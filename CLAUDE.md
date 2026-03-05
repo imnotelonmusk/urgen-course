@@ -27,6 +27,9 @@ npm test
 # Run a single test file
 npx vitest run src/lib/__tests__/file-system.test.ts
 
+# Run dev server in background (logs to logs.txt)
+npm run dev:daemon
+
 # Reset database
 npm run db:reset
 
@@ -73,6 +76,10 @@ The system prompt (`src/lib/prompts/generation.tsx`) tells the model:
 ### Auth
 
 Custom JWT-based auth (`src/lib/auth.ts`) using `jose`. Sessions are stored in an HTTP-only cookie (`auth-token`). No NextAuth. Middleware (`src/middleware.ts`) protects routes.
+
+### Server Actions
+
+`src/actions/` contains Next.js Server Actions for project CRUD (`create-project.ts`, `get-project.ts`, `get-projects.ts`). All actions validate session ownership before DB access.
 
 ### Database
 
